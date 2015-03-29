@@ -2,7 +2,7 @@ import re
 
 import requests
 
-from flask import Flask
+from flask import Flask, Response
 
 app = Flask(__name__)
 
@@ -12,7 +12,7 @@ def score():
     page = requests.get(url)
     match = re.search(r"<title>.*</title>", page.text)
     title = match.group(0)
-    return title.split("|")[0].split(">")[1].strip()
+    return Response(title.split("|")[0].split(">")[1].strip(), mimetype="text/plain")
 
 
 if __name__ == "__main__":
