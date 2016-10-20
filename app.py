@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def score():
-    url = "http://www.espncricinfo.com/indian-premier-league-2015/engine/match/829711.html"
+    url = "http://www.espncricinfo.com/india-v-new-zealand-2016-17/engine/match/1030221.html"
     page = requests.get(url)
     match = re.search(r"<title>.*</title>", page.text)
     title = match.group(0)
